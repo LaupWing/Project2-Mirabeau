@@ -23,12 +23,22 @@ main{
     height: 100%;
 }
 
+header{
+    width: 80%;
+    height: 20px;
+    background: orange;
+}
 h2{
     font-size: 20px;
 }
 h3{
     font-size: 50px;
     color: white;
+}
+input[type='radio']{
+    position: absolute;
+    width: 1px;
+    height: 1px;
 }
 /* Pure styling classes
 ----------------------------- */
@@ -66,10 +76,10 @@ h3{
     padding: 5px 0;
 }
 .room h2.false{
-    background: rgba(12, 165, 45,.7);
+    background: rgba(12, 165, 45,.8);
 }
 .room h2.true{
-    background: rgba(236, 34, 50,.7);
+    background: rgba(236, 34, 50,.8);
 }
 nav{
     display: flex;
@@ -82,10 +92,37 @@ nav{
     background: rgba(255,255,255,.9);
     border-radius: 0 0 16px 16px;
 }
+nav label{
+    width: 20%;
+    opacity: .2;
+    cursor: pointer;
+    transition: .25s;
+}
 nav img{
-    width: 15%;
+    width: 50%;
     opacity: .2;
 }
 nav img:first-of-type{
+    opacity: 1;
+}
+
+.currentInfo-container{
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.currentInfo-container div{
+    opacity: 0;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    transition: .25s;
+}
+
+.room #temperature:checked ~* .temperature,
+.room #soundLevel:checked ~* .soundLevel,
+.room #ambientLight:checked ~* .ambientLight,
+.room #co2:checked ~* .co2,
+.room #humidity:checked ~* .humidity{
     opacity: 1;
 }
