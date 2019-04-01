@@ -5,8 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home page</title>
+    <link rel="stylesheet" href="./style/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
 </head>
 <body>
-    Welcom boyyy
+    <main id="container" class="centering">
+        <div id="rooms" class="centering">
+            <% data.forEach((room,index)=>{ %>
+                <% if(index === 0) { %>
+                    <% include ./partials/room %> 
+                <% } %>
+            <% }) %>
+        </div>
+    </main>
+    <script src="./scripts/script.js"></script>
 </body>
 </html>

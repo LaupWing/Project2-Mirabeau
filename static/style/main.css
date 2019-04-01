@@ -1,0 +1,80 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* Elements
+----------------------------- */
+body{
+    height: 100vh;
+    background:
+        linear-gradient(
+        rgba(0, 0, 0, 0.3), 
+        rgba(0, 0, 0, 0.3)
+        ), 
+        url('/img/Mirabeau.jpg');
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Raleway', sans-serif;
+}
+
+main{
+    height: 100%;
+}
+
+h2{
+    font-size: 20px;
+}
+h3{
+    font-size: 50px;
+    color: white;
+}
+/* Pure styling classes
+----------------------------- */
+.centering{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+/* Styling specifik elements
+----------------------------- */
+#rooms{
+    width: 80%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.room{
+    width: 250px;
+    height: 350px;
+    background: rgba(0,0,0,.45);
+    border-radius: 20px;
+    border: solid 2px white; 
+    position: relative;
+    color: white;
+}
+.room h2{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center; 
+    border-radius: 20px 20px 0 0;
+    padding: 5px 0;
+}
+.room h2.false{
+    background: rgba(12, 165, 45,.7);
+}
+.room h2.true{
+    background: rgba(236, 34, 50,.7);
+}
+nav{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: orange;
+    height: 20px;
+}

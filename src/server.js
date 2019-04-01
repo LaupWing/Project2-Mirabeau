@@ -19,9 +19,4 @@ app
     .set('view engine', 'ejs')
     .set('views', 'view');
 
-// app
-//     .get('/', (req,res)=>{
-//         res.render('index')
-//     })
-
 app.listen(port, ()=>{console.log(`Server is running on port ${port}`)})
