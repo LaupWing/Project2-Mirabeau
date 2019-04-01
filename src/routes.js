@@ -8,14 +8,24 @@ router.get('/', (req,res)=>{
         .then(data => {
 
             const cleanData = data.map(room=>normalValues(room))
-            const keys = Object.keys(cleanData[0])
-            console.log(deleteItemFromArray(keys, 'roomName'))
+            let objectkeys = Object.keys(cleanData[0])
+            const keys = objectkeys
+                                .filter(deleteItemFromArray.bind(null,'roomName'))
+                                .filter(deleteItemFromArray.bind(null, 'occupancy'))
+            const keysTitel = keys.map(splitAndCapatalize)
+            const values = cleanData.map((item)=>{return Object.values(item)})
             res.render('index',{
                 data: cleanData,
-                keys
+                keys,
+                keysTitel,
+                values
             })
         })
 })
+
+function splitAndCapatalize(word){
+    return (word[0].toUpperCase()+word.slice(1)).match(/[A-Z][a-z]+|[0-9]+/g).join(" ")
+}
 
 function normalValues(object){
     return {
@@ -29,14 +39,10 @@ function normalValues(object){
     }
 }
 
-function deleteItemFromArray(array, item){
-    const index = array.indexOf(item)
-    console.log(index)
-    // Als een item niet bestaat dan word die weergeven als een -1
-    if(index>-1){
-        array.splice(index,1)
+function deleteItemFromArray(check, element){
+    if(check !== element){
+        return element
     }
-    return array
 }
 
 function getData(url){

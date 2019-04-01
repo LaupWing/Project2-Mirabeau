@@ -72,9 +72,20 @@ h3{
     background: rgba(236, 34, 50,.7);
 }
 nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     position: absolute;
     bottom: 0;
+    padding: 10px 0;
     width: 100%;
-    background: orange;
-    height: 20px;
+    background: rgba(255,255,255,.9);
+    border-radius: 0 0 16px 16px;
+}
+nav img{
+    width: 15%;
+    opacity: .2;
+}
+nav img:first-of-type{
+    opacity: 1;
 }
