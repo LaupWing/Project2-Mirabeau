@@ -2,9 +2,9 @@
     <h2 class="<%=room.occupancy%>"><%= room.roomName %></h2>
     <% keys.forEach((key,index)=>{ %>
         <% if(index === 0){ %>
-            <input name="info" type="radio" id="<%=key%>" checked>
+            <input name="info<%=roomID%>" type="radio" id="<%=key%><%= roomID %>" checked>
         <% } else {%>
-            <input name="info" type="radio" id="<%=key%>">
+            <input name="info<%=roomID%>" type="radio" id="<%=key%><%= roomID %>">
         <% } %>
     <% }) %>
     <section class="currentInfo-container centering">
@@ -31,7 +31,7 @@
     </section>
     <nav>
         <% keys.forEach(key=>{ %>
-            <label class="<%=key%> centering" for="<%=key%>">
+            <label class="<%=key%> centering" for="<%=key%><%= roomID %>">
                 <img src="./img/navitems/<%= key %>.png" alt="">
             </label>
         <% }) %>

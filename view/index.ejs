@@ -11,11 +11,11 @@
 <body>
     <main id="container" class="centering">
         <div id="rooms" class="centering">
-            <% data.forEach((room,index)=>{ %>
-                <% if(index === 0) { %>
-                    <% include ./partials/room %> 
-                <% } %>
-            <% }) %>
+            <div id="rooms-wrapper">
+                <% data.forEach((room,roomID)=>{ %>
+                    <% include partials/room %> 
+                <% }) %>
+            </div> 
         </div>
     </main>
     <script src="./scripts/script.js"></script>

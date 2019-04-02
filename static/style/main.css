@@ -52,20 +52,29 @@ input[type='radio']{
 ----------------------------- */
 #rooms{
     width: 80%;
-    max-width: 800px;
+    max-width: 1000px;
     display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 80vh;
 }
-
+#rooms-wrapper{
+    margin: 20px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
 .room{
-    width: 250px;
-    height: 350px;
+    width: 200px;
+    height: 300px;
     background: rgba(0,0,0,.45);
     border-radius: 20px;
     border: solid 2px white; 
     position: relative;
     color: white;
+    margin: 20px;
 }
 .room h2{
     position: absolute;
@@ -119,10 +128,105 @@ nav img:first-of-type{
     transition: .25s;
 }
 
-.room #temperature:checked ~* .temperature,
-.room #soundLevel:checked ~* .soundLevel,
-.room #ambientLight:checked ~* .ambientLight,
-.room #co2:checked ~* .co2,
-.room #humidity:checked ~* .humidity{
+
+/* Bullshit styles... iets met id en input types
+------------------ */
+
+.room #temperature1:checked ~* .temperature,
+.room #soundLevel1:checked ~* .soundLevel,
+.room #ambientLight1:checked ~* .ambientLight,
+.room #co21:checked ~* .co2,
+.room #humidity1:checked ~* .humidity{
+    opacity: 1;
+}
+.room #temperature2:checked ~* .temperature,
+.room #soundLevel2:checked ~* .soundLevel,
+.room #ambientLight2:checked ~* .ambientLight,
+.room #co22:checked ~* .co2,
+.room #humidity2:checked ~* .humidity{
+    opacity: 1;
+}
+.room #temperature3:checked ~* .temperature,
+.room #soundLevel3:checked ~* .soundLevel,
+.room #ambientLight3:checked ~* .ambientLight,
+.room #co23:checked ~* .co2,
+.room #humidity3:checked ~* .humidity{
+    opacity: 1;
+}
+.room #temperature4:checked ~* .temperature,
+.room #soundLevel4:checked ~* .soundLevel,
+.room #ambientLight4:checked ~* .ambientLight,
+.room #co24:checked ~* .co2,
+.room #humidity4:checked ~* .humidity{
+    opacity: 1;
+}
+.room #temperature5:checked ~* .temperature,
+.room #soundLevel5:checked ~* .soundLevel,
+.room #ambientLight5:checked ~* .ambientLight,
+.room #co25:checked ~* .co2,
+.room #humidity5:checked ~* .humidity{
+    opacity: 1;
+}
+.room #temperature5:checked ~* .temperature,
+.room #soundLevel5:checked ~* .soundLevel,
+.room #ambientLight5:checked ~* .ambientLight,
+.room #co25:checked ~* .co2,
+.room #humidity5:checked ~* .humidity{
+    opacity: 1;
+}
+
+.room #temperature6:checked ~* .temperature,
+.room #soundLevel6:checked ~* .soundLevel,
+.room #ambientLight6:checked ~* .ambientLight,
+.room #co26:checked ~* .co2,
+.room #humidity6:checked ~* .humidity{
+    opacity: 1;
+}
+
+.room #temperature7:checked ~* .temperature,
+.room #soundLevel7:checked ~* .soundLevel,
+.room #ambientLight7:checked ~* .ambientLight,
+.room #co27:checked ~* .co2,
+.room #humidity7:checked ~* .humidity{
+    opacity: 1;
+}
+
+.room #temperature8:checked ~* .temperature,
+.room #soundLevel8:checked ~* .soundLevel,
+.room #ambientLight8:checked ~* .ambientLight,
+.room #co28:checked ~* .co2,
+.room #humidity8:checked ~* .humidity{
+    opacity: 1;
+}
+
+.room #temperature9:checked ~* .temperature,
+.room #soundLevel9:checked ~* .soundLevel,
+.room #ambientLight9:checked ~* .ambientLight,
+.room #co29:checked ~* .co2,
+.room #humidity9:checked ~* .humidity{
+    opacity: 1;
+}
+
+.room #temperature10:checked ~* .temperature,
+.room #soundLevel10:checked ~* .soundLevel,
+.room #ambientLight10:checked ~* .ambientLight,
+.room #co210:checked ~* .co2,
+.room #humidity10:checked ~* .humidity{
+    opacity: 1;
+}
+
+.room #temperature11:checked ~* .temperature,
+.room #soundLevel11:checked ~* .soundLevel,
+.room #ambientLight11:checked ~* .ambientLight,
+.room #co211:checked ~* .co2,
+.room #humidity11:checked ~* .humidity{
+    opacity: 1;
+}
+
+.room #temperature12:checked ~* .temperature,
+.room #soundLevel12:checked ~* .soundLevel,
+.room #ambientLight12:checked ~* .ambientLight,
+.room #co212:checked ~* .co2,
+.room #humidity12:checked ~* .humidity{
     opacity: 1;
 }
