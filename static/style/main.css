@@ -50,6 +50,42 @@ svg path{
     stroke-width: 5px;
     fill: transparent;
 }
+button{
+    padding: 5px 10px;
+    background: white;
+    border: black solid 1px;
+    outline: none;
+    border-radius: 10px;
+    text-transform: capitalize;
+    letter-spacing: 2px;
+    transition: .25s;
+    cursor: pointer;
+}
+button:hover{
+    background: black;
+    color:white;
+}
+/* Custom ScrollBar
+----------------------------- */
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(255,255,255,.2); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.5); 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: white; 
+}
 /* Pure styling classes
 ----------------------------- */
 .centering{
@@ -64,14 +100,18 @@ svg path{
 #rooms{
     width: 80%;
     max-width: 1000px;
+    min-width: 800px;
+    min-height: 500px;
     display: flex;
     position: relative;
     height: 75vh;
     border: rgba(255,255,255,.9) solid 3px;
+    background: rgba(255,255,255,.3)
 }
 #rooms-wrapper{
     margin: 20px;
     margin-right: 0;
+    margin-top: 40px;
     margin-left: 17px;
     display: flex;
     overflow-x: hidden;
@@ -112,15 +152,17 @@ nav{
     position: absolute;
     bottom: 0;
     padding: 5px 0;
-    width: 100%;
     background: rgba(255,255,255,.9);
-    border-radius: 0 0 16px 16px;
 }
 
 nav label{
     width: 20%;
     cursor: pointer;
     transition: .25s;
+}
+nav.favorites{
+    width: 100%;
+    border-radius: 0 0 16px 16px;
 }
 nav#navigation{
     top:-50px;
@@ -160,4 +202,46 @@ nav img:first-of-type{
 #rooms #co2:checked ~* .co2,
 #rooms #humidity:checked ~* .humidity{
     opacity: 1;
+}
+.toggleSort_filter{
+    position: absolute;
+    top: -34px;
+    right: -3px;
+    border: rgba(255,255,255,.9) solid 2px;
+    color: white;
+    height: 30px;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: .25s;
+}
+.toggleSort_filter:hover{
+    background: rgba(255,255,255,.9);
+    color: black;
+}
+#toggleSort_filter:checked + #sort_filter{
+    height: 30px;
+    padding: 5px 0;
+}
+#toggleSort_filter:checked ~* #rooms-wrapper{
+    background: orange;
+}
+nav#sort_filter{
+    width: 100%;
+    background: rgba(255,255,255,.9);
+    padding: 0;
+    transition: .25s;
+    /* height: 30px; */
+    height: 0;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+nav#sort_filter div{
+    display: flex;
+    align-items: center;
+}
+nav#sort_filter div select{
+    margin-left: 10px;
+    padding: 2px 5px;
+    border-radius: 10px;
 }

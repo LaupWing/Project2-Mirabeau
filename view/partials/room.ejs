@@ -1,12 +1,5 @@
 <section class="room centering">
     <h2 class="<%=room.occupancy%>"><%= room.roomName %></h2>
-    <!-- <% keys.forEach((key,index)=>{ %>
-        <% if(index === 0){ %>
-            <input name="info<%=roomID%>" type="radio" id="<%=key%><%= roomID %>" checked>
-        <% } else {%>
-            <input name="info<%=roomID%>" type="radio" id="<%=key%><%= roomID %>">
-        <% } %>
-    <% }) %> -->
     <section class="currentInfo-container centering">
         <div class="currentInfo temperature centering">
             <p>Temperature</p>
@@ -29,7 +22,7 @@
             <h3><%= room.humidity %></h3>
         </div>
     </section>
-    <nav>
+    <nav class="favorites">
         <input name="notifaction" type="checkbox" id="n_<%= room.roomName %>">
         <label for="n_<%= room.roomName %>">
             <svg id="Laag_1" data-name="Laag 1" viewBox="0 0 430.58 410.43">

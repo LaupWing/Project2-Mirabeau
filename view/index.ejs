@@ -10,28 +10,57 @@
 </head>
 <body>
     <main id="container" class="centering">
-        <div id="rooms" class="centering">
-            <% keys.forEach((key,index)=>{ %>
-                <% if(index === 0){ %>
-                    <input name="info" type="radio" id="<%=key%>" checked>
-                <% } else {%>
-                    <input name="info" type="radio" id="<%=key%>">
-                <% } %>
-            <% }) %>
-            <div id="rooms-wrapper">
-                <nav id="navigation">
-                    <% keys.forEach(key=>{ %>
-                        <label class="<%=key%> centering" for="<%=key%>">
-                            <img src="./img/navitems/<%= key %>.png" alt="">
-                        </label>
-                    <% }) %>
-                </nav>
-                <% data.forEach((room,roomID)=>{ %>
-                    <% include partials/room %> 
+        <form action="/filter" class="centering" method="POST">
+            <div id="rooms" class="centering">
+                <% keys.forEach((key,index)=>{ %>
+                    <% if(index === 0 && checked === ''){ %>
+                        <input name="info" value="<%=key%>" type="radio" id="<%=key%>" checked>
+                    <% } else {%>
+                        <% if(checked === key ) {%>
+                            <input name="info" value="<%=key%>" type="radio" id="<%=key%>" checked>
+                        <% } else { %>
+                            <input name="info" value="<%=key%>" type="radio" id="<%=key%>">
+                        <% } %>
+                    <% } %>
                 <% }) %>
-            </div> 
-        </div>
-    </main>
+                <input type="checkbox" id="toggleSort_filter">
+                <nav id="sort_filter">
+                    <div class="sortItem">
+                        <p>Sorteer van:</p>
+                        <select name="sortOption" id="sortOption">
+                            <option value="High">Hoog naar Laag</option>
+                            <option value="Low">Laag naar Hoog</option>
+                        </select>
+                    </div>
+                    <div class="availabilty">
+                        <p>Filter op beschikbaarheid:</p>
+                        <select name="availabilty" id="availabilty">
+                            <option value="geen">Niet Filteren</option>
+                            <option value="false">Beschikbaar</option>
+                            <option value="true">Bezet</option>
+                        </select>
+                    </div>
+                    <button type="submit"> 
+                        submit
+                    </button>
+                </nav>
+                <div id="rooms-wrapper">
+                    <nav id="navigation">
+                        <% keys.forEach(key=>{ %>
+                            <label class="<%=key%> centering" for="<%=key%>">
+                                <img src="./img/navitems/<%= key %>.png" alt="">
+                            </label>
+                        <% }) %>
+                    </nav>
+    
+                    <label class="toggleSort_filter centering" for="toggleSort_filter">Sorteer of Filter</label>
+                    <% data.forEach((room,roomID)=>{ %>
+                        <% include partials/room %> 
+                    <% }) %>
+                </div> 
+            </div>
+        </form>
+        </main>
     <script src="./scripts/script.js"></script>
 </body>
 </html>
