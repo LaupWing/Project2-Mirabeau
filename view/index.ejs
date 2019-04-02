@@ -11,7 +11,21 @@
 <body>
     <main id="container" class="centering">
         <div id="rooms" class="centering">
+            <% keys.forEach((key,index)=>{ %>
+                <% if(index === 0){ %>
+                    <input name="info" type="radio" id="<%=key%>" checked>
+                <% } else {%>
+                    <input name="info" type="radio" id="<%=key%>">
+                <% } %>
+            <% }) %>
             <div id="rooms-wrapper">
+                <nav id="navigation">
+                    <% keys.forEach(key=>{ %>
+                        <label class="<%=key%> centering" for="<%=key%>">
+                            <img src="./img/navitems/<%= key %>.png" alt="">
+                        </label>
+                    <% }) %>
+                </nav>
                 <% data.forEach((room,roomID)=>{ %>
                     <% include partials/room %> 
                 <% }) %>

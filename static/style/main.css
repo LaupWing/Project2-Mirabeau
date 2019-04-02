@@ -32,13 +32,23 @@ h2{
     font-size: 20px;
 }
 h3{
-    font-size: 50px;
+    font-size: 40px;
     color: white;
 }
-input[type='radio']{
+input[type='radio'],
+input[type='checkbox']{
     position: absolute;
     width: 1px;
     height: 1px;
+}
+svg{
+    width: 25px;
+    cursor: pointer;
+}
+svg path{
+    stroke: black;
+    stroke-width: 5px;
+    fill: transparent;
 }
 /* Pure styling classes
 ----------------------------- */
@@ -50,25 +60,29 @@ input[type='radio']{
 }
 /* Styling specifik elements
 ----------------------------- */
+/* Room elements styling */
 #rooms{
     width: 80%;
     max-width: 1000px;
     display: flex;
     position: relative;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    height: 80vh;
+    height: 75vh;
+    border: rgba(255,255,255,.9) solid 3px;
 }
 #rooms-wrapper{
-    margin: 20px 20px;
+    margin: 20px;
+    margin-right: 0;
+    margin-left: 17px;
     display: flex;
+    overflow-x: hidden;
+    overflow-y: scroll;
     align-items: center;
     justify-content: space-around;
     flex-wrap: wrap;
 }
 .room{
-    width: 200px;
-    height: 300px;
+    width: 180px;
+    height: 220px;
     background: rgba(0,0,0,.45);
     border-radius: 20px;
     border: solid 2px white; 
@@ -90,22 +104,34 @@ input[type='radio']{
 .room h2.true{
     background: rgba(236, 34, 50,.8);
 }
+/* All the navigations */
 nav{
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: absolute;
     bottom: 0;
-    padding: 10px 0;
+    padding: 5px 0;
     width: 100%;
     background: rgba(255,255,255,.9);
     border-radius: 0 0 16px 16px;
 }
+
 nav label{
     width: 20%;
-    opacity: .2;
     cursor: pointer;
     transition: .25s;
+}
+nav#navigation{
+    top:-50px;
+    left: -3px;
+    height: 20px;
+    border-radius: 16px 16px 0 0;
+    width: 40%;
+    padding: 15px 10px;
+}
+nav#navigation label{
+    opacity: .2;
 }
 nav img{
     width: 50%;
@@ -128,105 +154,10 @@ nav img:first-of-type{
     transition: .25s;
 }
 
-
-/* Bullshit styles... iets met id en input types
------------------- */
-
-.room #temperature1:checked ~* .temperature,
-.room #soundLevel1:checked ~* .soundLevel,
-.room #ambientLight1:checked ~* .ambientLight,
-.room #co21:checked ~* .co2,
-.room #humidity1:checked ~* .humidity{
-    opacity: 1;
-}
-.room #temperature2:checked ~* .temperature,
-.room #soundLevel2:checked ~* .soundLevel,
-.room #ambientLight2:checked ~* .ambientLight,
-.room #co22:checked ~* .co2,
-.room #humidity2:checked ~* .humidity{
-    opacity: 1;
-}
-.room #temperature3:checked ~* .temperature,
-.room #soundLevel3:checked ~* .soundLevel,
-.room #ambientLight3:checked ~* .ambientLight,
-.room #co23:checked ~* .co2,
-.room #humidity3:checked ~* .humidity{
-    opacity: 1;
-}
-.room #temperature4:checked ~* .temperature,
-.room #soundLevel4:checked ~* .soundLevel,
-.room #ambientLight4:checked ~* .ambientLight,
-.room #co24:checked ~* .co2,
-.room #humidity4:checked ~* .humidity{
-    opacity: 1;
-}
-.room #temperature5:checked ~* .temperature,
-.room #soundLevel5:checked ~* .soundLevel,
-.room #ambientLight5:checked ~* .ambientLight,
-.room #co25:checked ~* .co2,
-.room #humidity5:checked ~* .humidity{
-    opacity: 1;
-}
-.room #temperature5:checked ~* .temperature,
-.room #soundLevel5:checked ~* .soundLevel,
-.room #ambientLight5:checked ~* .ambientLight,
-.room #co25:checked ~* .co2,
-.room #humidity5:checked ~* .humidity{
-    opacity: 1;
-}
-
-.room #temperature6:checked ~* .temperature,
-.room #soundLevel6:checked ~* .soundLevel,
-.room #ambientLight6:checked ~* .ambientLight,
-.room #co26:checked ~* .co2,
-.room #humidity6:checked ~* .humidity{
-    opacity: 1;
-}
-
-.room #temperature7:checked ~* .temperature,
-.room #soundLevel7:checked ~* .soundLevel,
-.room #ambientLight7:checked ~* .ambientLight,
-.room #co27:checked ~* .co2,
-.room #humidity7:checked ~* .humidity{
-    opacity: 1;
-}
-
-.room #temperature8:checked ~* .temperature,
-.room #soundLevel8:checked ~* .soundLevel,
-.room #ambientLight8:checked ~* .ambientLight,
-.room #co28:checked ~* .co2,
-.room #humidity8:checked ~* .humidity{
-    opacity: 1;
-}
-
-.room #temperature9:checked ~* .temperature,
-.room #soundLevel9:checked ~* .soundLevel,
-.room #ambientLight9:checked ~* .ambientLight,
-.room #co29:checked ~* .co2,
-.room #humidity9:checked ~* .humidity{
-    opacity: 1;
-}
-
-.room #temperature10:checked ~* .temperature,
-.room #soundLevel10:checked ~* .soundLevel,
-.room #ambientLight10:checked ~* .ambientLight,
-.room #co210:checked ~* .co2,
-.room #humidity10:checked ~* .humidity{
-    opacity: 1;
-}
-
-.room #temperature11:checked ~* .temperature,
-.room #soundLevel11:checked ~* .soundLevel,
-.room #ambientLight11:checked ~* .ambientLight,
-.room #co211:checked ~* .co2,
-.room #humidity11:checked ~* .humidity{
-    opacity: 1;
-}
-
-.room #temperature12:checked ~* .temperature,
-.room #soundLevel12:checked ~* .soundLevel,
-.room #ambientLight12:checked ~* .ambientLight,
-.room #co212:checked ~* .co2,
-.room #humidity12:checked ~* .humidity{
+#rooms #temperature:checked ~* .temperature,
+#rooms #soundLevel:checked ~* .soundLevel,
+#rooms #ambientLight:checked ~* .ambientLight,
+#rooms #co2:checked ~* .co2,
+#rooms #humidity:checked ~* .humidity{
     opacity: 1;
 }

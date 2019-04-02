@@ -6,7 +6,6 @@ const url = 'http://mirabeau.denniswegereef.nl/api/v1/rooms'
 router.get('/', (req,res)=>{
     getData(url)
         .then(data => {
-
             const cleanData = data.map(room=>normalValues(room))
             let objectkeys = Object.keys(cleanData[0])
             const keys = objectkeys
@@ -14,6 +13,7 @@ router.get('/', (req,res)=>{
                                 .filter(deleteItemFromArray.bind(null, 'occupancy'))
             const keysTitel = keys.map(splitAndCapatalize)
             const values = cleanData.map((item)=>{return Object.values(item)})
+            console.log(res.render)
             res.render('index',{
                 data: cleanData,
                 keys,
