@@ -36,17 +36,24 @@ const radioChecked= radioBtns
     .map(value=>value.value)
     .toString()
 
+    
 const select = document.querySelectorAll('select')
     .forEach(select=>{
         select.addEventListener('change', function(){
+            const checked = Array.from(document.querySelectorAll('input[type="radio"]'))
+                .filter((radio)=>{
+                    return radio.checked
+                })
+                .map(radio=>{
+                    return radio.value
+                })
+                .toString()
+            console.log(checked)
             if(select.name === 'sortOption'){
-                if(select.value === 'High'){
-                    console.log(select.value)
-                }else if(select.value === 'Low'){
-                    console.log(select.value)
-                }else{
-                    console.log('check')
-                }
+                const sorting = allRooms.sort(propComparator(select.value, checked))
+                sorting.forEach(s=>{
+                    console.log(s.querySelector(`.${checked} h3`).innerHTML)
+                })
             }else{
                 if(select.value === 'false'){
                     console.log(select.value , 'filter not avail')
@@ -60,3 +67,15 @@ const select = document.querySelectorAll('select')
         })
     })
 
+console.log(allRooms)
+
+function propComparator(order, categorie) {
+    console.log(order, categorie)
+    return function(a, b) {
+        if(order === 'Low'){
+            return Number(a.querySelector(`.${categorie} h3`).innerHTML) -Number(b.querySelector(`.${categorie} h3`).innerHTML)
+        }else{
+            return Number(b.querySelector(`.${categorie} h3`).innerHTML) - Number(a.querySelector(`.${categorie} h3`).innerHTML)
+        }
+    }
+}
