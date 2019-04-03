@@ -52,11 +52,13 @@
                             </label>
                         <% }) %>
                     </nav>
-    
+                    
                     <label class="toggleSort_filter centering" for="toggleSort_filter">Sorteer of Filter</label>
-                    <% data.forEach((room,roomID)=>{ %>
-                        <% include partials/room %> 
-                    <% }) %>
+                    <section class="justAnotherContainer">
+                        <% data.forEach((room,roomID)=>{ %>
+                            <% include partials/room %> 
+                        <% }) %>
+                    </section>
                 </div> 
             </div>
         </form>

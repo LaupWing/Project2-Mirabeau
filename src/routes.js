@@ -73,18 +73,6 @@ function splitAndCapatalize(word){
 
 function filterAvailability(condition){
     return function(element){
-
-        // if(condition === 'false'){
-        //     if(element.occupancy === false){
-        //         return element
-        //     }
-        // }else{
-        //     if(element.occupancy === true){
-        //         return element
-        //     }
-        // }
-        // Dit hieronder werkt niet??? (als element.occupancy(true) gelijk is aan condtion(true))
-        // console.log(conditio.toString())
         const bool = element.occupancy.toString()
         return bool === condition
     }
