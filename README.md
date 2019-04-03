@@ -1,7 +1,5 @@
 # Project 2 Mirabeau
-```js
- <%= room.<%=key%> %> 
-                <% if (key === 'temperature'){ %>
-                    c&deg
-                <% } %> 
-```
+
+## To-do-List
+- [ ] Javascript filter/sort
+- [ ] Backend MongoDB stache the temparture etc of each room
