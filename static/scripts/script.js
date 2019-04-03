@@ -1,13 +1,27 @@
 const allRooms = Array.from(document.querySelectorAll('section.room'));
 const radioBtns = Array.from(document.querySelectorAll('input[type="radio"]'))
+let filterToggle = false
+let filteredArray = []
+document.querySelector('nav#sort_filter').removeChild(document.querySelector('nav#sort_filter button'))
+
+radioBtns.forEach(radio=>{
+    radio.addEventListener('change', ()=>{
+        sortItems(document.querySelector('#sortOption').value)
+    })
+})
+
 const select = document.querySelectorAll('select')
     .forEach(select=>{
         select.addEventListener('change', function(){
             if(select.name === 'sortOption'){
                 sortItems(select.value)
             }else{
-                if(select.value === 'geen') return
-                
+                if(select.value === 'geen'){
+                    filterToggle = false
+                    sortItems(document.querySelector('#sortOption').value)
+                }else{
+                    filterList(allRooms, select.value)
+                }
             }
         })
     })
@@ -17,13 +31,36 @@ function sortItems(value){
         .filter((radio)=> radio.checked)
         .map(radio=>radio.value)
         .toString()
-    const sorted = allRooms.sort(elementComparator(value, checked))
+    const sorted = checkFiltered().sort(elementComparator(value, checked))
     const container = document.querySelector('.justAnotherContainer')
     removeChilds(container)
     addElements(sorted, container)
 }
 
+function filterList(list, value){
+    const container = document.querySelector('.justAnotherContainer') 
+    const filtered = list.filter(filtering(value))
+    filterToggle = true
+    filteredArray = filtered
+    removeChilds(container)
+    addElements(filtered, container)
+}
 
+
+function checkFiltered(){
+    if(filterToggle){
+        return filteredArray
+    }else{
+        return allRooms
+    }
+}
+
+
+function filtering(value){
+    return function(el){
+        return el.querySelector('h2').classList[0] === value
+    }
+}
 
 function removeChilds(container){
     while(container.firstChild){
@@ -37,7 +74,6 @@ function addElements(nodeList, container){
         container.appendChild(node)
     })
 }
-
 
 
 function elementComparator(order, categorie) {
