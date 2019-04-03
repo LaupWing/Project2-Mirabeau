@@ -31,6 +31,7 @@ function sortItems(value){
         .filter((radio)=> radio.checked)
         .map(radio=>radio.value)
         .toString()
+    
     const sorted = checkFiltered().sort(elementComparator(value, checked))
     const container = document.querySelector('.justAnotherContainer')
     removeChilds(container)
