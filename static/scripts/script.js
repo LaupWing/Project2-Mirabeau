@@ -11,11 +11,16 @@ document.querySelectorAll('a')
             event.preventDefault()
             console.log(a.href)
             fetch(a.href)
-                .then(body=>{console.log(body.headers)
-                    return body.text()})
+                .then(body=>body.text())
                 .then(body=>{
-                    console.log(body)
-                    // document.body.innerHTML = body
+                    const res = body
+                        .replace('title>Home page</title>', '')
+                        .replace('<meta charset="UTF-8">', '')
+                        .replace('<meta name="viewport" content="width=device-width, initial-scale=1.0">', '')
+                        .replace('<meta http-equiv="X-UA-Compatible" content="ie=edge">', '')
+                        .replace('<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">', '')
+                        .replace('<link rel="stylesheet" href="./style/main.css">', '')
+                    document.body.innerHTML = res
                 })
         })
     })

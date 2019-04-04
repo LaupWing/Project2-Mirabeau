@@ -99,4 +99,4 @@ function getData(url){
         .then(data=>data.data)
 }
 
-module.exports = {dataForRendering, dataToTextObj, getData}
+module.exports = {dataForRendering, dataToTextObj, getData, normalValues}

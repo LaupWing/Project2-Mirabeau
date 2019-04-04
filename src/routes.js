@@ -1,8 +1,8 @@
 const express   = require('express');
 const router    = express.Router();
 const dataMethods = require('./data');
-const dataToTextObj = dataMethods.dataToTextObj;
-const dataForRendering = dataMethods.dataForRendering; 
+const {dataToTextObj} = dataMethods;
+const {dataForRendering} = dataMethods; 
 
 router.get('/', (req,res)=>{
     dataForRendering()

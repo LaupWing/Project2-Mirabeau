@@ -4,8 +4,8 @@ const axios = require('axios');
 const router = express.Router();
 const apiUrl = 'http://localhost:3001/api'
 const {getData} = require('./data');
-
-console.log(getData('https://pokeapi.co/api/v2/'))
+const {normalValues} = require('./data');
+const moment = require('moment');
 // Omdat ik in de routes.js heb aangegeven dat deze router een get request is naar /api
 // word slash hier gerefeerd naar /api
 router.get('/', async (req,res)=>{
@@ -17,25 +17,55 @@ router.get('/', async (req,res)=>{
 
 router.post('/', async (req,res)=>{
     const posts = await loadPostCollection();
-    await posts.insertOne({
-        test: 'Test in de api4'
-    });
+    const cleanData = await getRoomDataGetDate();
+    cleanData.forEach(async cleanData=>{
+        await posts.insertOne({
+            date: cleanData.date,
+            roomName: cleanData.roomName,
+            temperature: cleanData.temperature,
+            soundLevel: cleanData.soundLevel,
+            ambientLight: cleanData.ambientLight,
+            co2: cleanData.co2,
+            humidity: cleanData.humidity
+        });
+    })
 })
+
+function getRoomDataGetDate(){
+    return getData('http://mirabeau.denniswegereef.nl/api/v1/rooms')
+            .then(data=>{
+                const cleanData = data
+                    .map(normalValues)
+                    .map(room=>{
+                        room.date = new Date()
+                        return room
+                    })
+                return cleanData
+            })
+}
 
 function getDataFromMongoDB(){
     return new Promise(async (resolve, reject)=>{
         try{
             const res = await axios.get(apiUrl)
             const data = res.data;
-            console.log(data)
+            const latestDate = moment(data[data.length - 13].date, "YYYY-MM-DD HH:mm:ss");
+            const newDate = moment(data[data.length - 12].date, "YYYY-MM-DD HH:mm:ss")
+            console.log(latestDate.format('Do') === newDate.format('Do'))
+            if(latestDate.format('Do') !== newDate.format('Do')){
+
+            }
+            
         }
         catch(err){
-
+            console.log('errrror',err)
         }
     })
 }
 
 getDataFromMongoDB()
+
+
 
 // axios.post(apiUrl)
 //     .then(response=>{console.log('response')})
