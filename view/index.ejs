@@ -55,9 +55,7 @@
                     
                     <label class="toggleSort_filter centering" for="toggleSort_filter">Sorteer of Filter</label>
                     <section class="justAnotherContainer">
-                        <% data.forEach((room,roomID)=>{ %>
-                            <% include partials/room %> 
-                        <% }) %>
+                        <%- include(page) %> 
                     </section>
                 </div> 
             </div>

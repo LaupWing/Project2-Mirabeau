@@ -65,6 +65,11 @@ button:hover{
     background: black;
     color:white;
 }
+a{  
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
 /* Custom ScrollBar
 ----------------------------- */
 /* width */
@@ -142,12 +147,19 @@ button:hover{
     text-align: center; 
     border-radius: 20px 20px 0 0;
     padding: 5px 0;
+    left: 0;
 }
 .room h2.false{
     background: rgba(12, 165, 45,.8);
 }
 .room h2.true{
     background: rgba(236, 34, 50,.8);
+}
+.categorie{
+    font-weight: 800;
+}
+.feeling{
+    font-weight: 300;
 }
 /* All the navigations */
 nav{
@@ -182,7 +194,7 @@ nav#navigation label{
 }
 nav img{
     width: 50%;
-    opacity: .2;
+    opacity: .1;
 }
 nav img:first-of-type{
     opacity: 1;

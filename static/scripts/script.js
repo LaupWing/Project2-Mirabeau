@@ -1,14 +1,31 @@
-const allRooms = Array.from(document.querySelectorAll('section.room'));
-const radioBtns = Array.from(document.querySelectorAll('input[type="radio"]'))
-let filterToggle = false
-let filteredArray = []
-document.querySelector('nav#sort_filter').removeChild(document.querySelector('nav#sort_filter button'))
+const allRooms      = Array.from(document.querySelectorAll('section.room'));
+const radioBtns     = Array.from(document.querySelectorAll('input[type="radio"]'))
+let filterToggle    = false
+let filteredArray   = []
+document.querySelector('nav#sort_filter')
+    .removeChild(document.querySelector('nav#sort_filter button'))
 
+document.querySelectorAll('a')
+    .forEach(a=>{
+        a.addEventListener('click', ()=>{
+            event.preventDefault()
+            console.log(a.href)
+            fetch(a.href)
+                .then(body=>{console.log(body.headers)
+                    return body.text()})
+                .then(body=>{
+                    console.log(body)
+                    // document.body.innerHTML = body
+                })
+        })
+    })
 radioBtns.forEach(radio=>{
     radio.addEventListener('change', ()=>{
         sortItems(document.querySelector('#sortOption').value)
     })
 })
+
+
 
 const select = document.querySelectorAll('select')
     .forEach(select=>{
@@ -32,35 +49,30 @@ function sortItems(value){
         .map(radio=>radio.value)
         .toString()
     
-    const sorted = checkFiltered().sort(elementComparator(value, checked))
+    const sorted    = checkFiltered().sort(elementComparator(value, checked))
     const container = document.querySelector('.justAnotherContainer')
     removeChilds(container)
     addElements(sorted, container)
 }
 
 function filterList(list, value){
-    const container = document.querySelector('.justAnotherContainer') 
-    const filtered = list.filter(filtering(value))
-    filterToggle = true
-    filteredArray = filtered
+    const container     =   document.querySelector('.justAnotherContainer') 
+    const filtered      =   list.filter(filtering(value))
+    filterToggle        =   true
+    filteredArray       =   filtered
     removeChilds(container)
     addElements(filtered, container)
 }
 
 
 function checkFiltered(){
-    if(filterToggle){
-        return filteredArray
-    }else{
-        return allRooms
-    }
+    if(filterToggle)    return filteredArray
+                        return allRooms
 }
 
 
 function filtering(value){
-    return function(el){
-        return el.querySelector('h2').classList[0] === value
-    }
+    return (el) => el.querySelector('h2').classList[0] === value
 }
 
 function removeChilds(container){
@@ -71,9 +83,7 @@ function removeChilds(container){
 
 function addElements(nodeList, container){
     // It saids nodelist but it is actually an array with elements
-    nodeList.forEach(node=>{
-        container.appendChild(node)
-    })
+    nodeList.forEach(node=>container.appendChild(node))
 }
 
 
