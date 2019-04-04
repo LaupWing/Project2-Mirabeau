@@ -262,3 +262,24 @@ nav#sort_filter div select{
     padding: 2px 5px;
     border-radius: 10px;
 }
+
+/* Some keyframe fun
+----------------------------- */
+.flipping{
+    animation: flipping forwards 1s;
+    animation-delay: .15s;
+}
+@keyframes flipping{
+    0%{transform: scaleX(1)}
+    25%{transform: scaleX(0)}
+    50%{transform: scaleX(-1);opacity: 1;}
+    75%{transform: scaleX(0)}
+    100%{transform: scaleX(1);opacity: 0;}
+}
+.scaleToZero{
+    animation: scaleToZero forwards 1s;
+}
+@keyframes scaleToZero{
+    from{transform: scale(1)}
+    to{transform: scale(0)}
+}

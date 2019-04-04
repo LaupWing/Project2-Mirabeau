@@ -9,19 +9,27 @@ document.querySelectorAll('a')
     .forEach(a=>{
         a.addEventListener('click', ()=>{
             event.preventDefault()
-            console.log(a.href)
-            fetch(a.href)
-                .then(body=>body.text())
-                .then(body=>{
-                    const res = body
-                        .replace('title>Home page</title>', '')
-                        .replace('<meta charset="UTF-8">', '')
-                        .replace('<meta name="viewport" content="width=device-width, initial-scale=1.0">', '')
-                        .replace('<meta http-equiv="X-UA-Compatible" content="ie=edge">', '')
-                        .replace('<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">', '')
-                        .replace('<link rel="stylesheet" href="./style/main.css">', '')
-                    document.body.innerHTML = res
+            const currentRoom = a.parentElement
+            document.querySelectorAll('section.room')
+                .forEach(room=>{
+                    if(room!==currentRoom)room.classList.add('scaleToZero')
                 })
+            a.parentElement.classList.add('flipping')
+            document.addEventListener('animationend',()=>{
+                fetch(a.href)
+                    .then(body=>body.text())
+                    .then(body=>{
+                        const res = body
+                            .replace('<title>Home page</title>', '')
+                            .replace('<meta charset="UTF-8">', '')
+                            .replace('<meta name="viewport" content="width=device-width, initial-scale=1.0">', '')
+                            .replace('<meta http-equiv="X-UA-Compatible" content="ie=edge">', '')
+                            .replace('<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">', '')
+                            .replace('<link rel="stylesheet" href="./style/main.css">', '')
+                        console.log(res)
+                        document.body.innerHTML = res
+                    })
+            })
         })
     })
 radioBtns.forEach(radio=>{
