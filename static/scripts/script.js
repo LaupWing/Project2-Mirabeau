@@ -92,14 +92,34 @@ function elementComparator(order, categorie) {
     return function(a, b) {
         if(order === 'Low'){
             if (categorie === 'temperature'){
-                return Number(a.querySelector(`.${categorie} h3`).innerHTML.split(" ")[0]) -Number(b.querySelector(`.${categorie} h3`).innerHTML.split(" ")[0])
+                return  Number(a.querySelector(`.${categorie} h3`)
+                            .innerHTML
+                            .trim()
+                            .split(" ")[0]) 
+                        -
+                        Number(b.querySelector(`.${categorie} h3`)
+                            .innerHTML
+                            .trim()
+                            .split(" ")[0])
             }
-            return Number(a.querySelector(`.${categorie} h3`).innerHTML) -Number(b.querySelector(`.${categorie} h3`).innerHTML)
+            return  Number(a.querySelector(`.${categorie} h3`).innerHTML) 
+                    -
+                    Number(b.querySelector(`.${categorie} h3`).innerHTML)
         }else{
             if (categorie === 'temperature'){
-                return Number(b.querySelector(`.${categorie} h3`).innerHTML.split(" ")[0]) -Number(a.querySelector(`.${categorie} h3`).innerHTML.split(" ")[0])
+                return  Number(b.querySelector(`.${categorie} h3`)
+                            .innerHTML
+                            .trim()
+                            .split(" ")[0]) 
+                        -
+                        Number(a.querySelector(`.${categorie} h3`)
+                            .innerHTML
+                            .trim()
+                            .split(" ")[0])
             }
-            return Number(b.querySelector(`.${categorie} h3`).innerHTML) - Number(a.querySelector(`.${categorie} h3`).innerHTML)
+            return  Number(b.querySelector(`.${categorie} h3`).innerHTML) 
+                    - 
+                    Number(a.querySelector(`.${categorie} h3`).innerHTML)
         }
     }
 }
