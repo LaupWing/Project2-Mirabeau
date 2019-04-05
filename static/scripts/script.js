@@ -31,6 +31,7 @@ document.querySelectorAll('a')
             })
         })
     })
+    
 radioBtns.forEach(radio=>{
     radio.addEventListener('change', ()=>{
         sortItems(document.querySelector('#sortOption').value)

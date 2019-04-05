@@ -263,6 +263,12 @@ nav#sort_filter div select{
     border-radius: 10px;
 }
 
+/* Last moement fix */
+#details{
+    background: white;
+    padding: 40px;
+}
+
 /* Some keyframe fun
 ----------------------------- */
 .flipping{

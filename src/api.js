@@ -45,8 +45,8 @@ function getRoomDataGetDate(){
 }
 
 async function checkTimePost(){
-    let date  = await getRoomDataGetDate()
-    date = moment(date[0].date, "YYYY-MM-DD HH:mm:ss")
+    let date    =   await getRoomDataGetDate()
+    date        =   moment(date[0].date, "YYYY-MM-DD HH:mm:ss")
     if(date.format("HH")>14){
         console.log('-------------posting to backend-------------')
         axios.post(apiUrl)
@@ -59,10 +59,10 @@ async function checkTimePost(){
 }
 async function getDataFromMongoDB(){
         try{
-            const res = await axios.get(apiUrl)
-            const data = res.data;
-            const latestDate = moment(data[data.length - 13].date, "YYYY-MM-DD HH:mm:ss");
-            const newDate = moment(data[data.length - 12].date, "YYYY-MM-DD HH:mm:ss")        
+            const res           =   await axios.get(apiUrl)
+            const data          =   res.data;
+            const latestDate    =   moment(data[data.length - 13].date, "YYYY-MM-DD HH:mm:ss");
+            const newDate       =   moment(data[data.length - 12].date, "YYYY-MM-DD HH:mm:ss")        
             if(latestDate.format('Do') !== newDate.format('Do')){
                 console.log('Geen nieuwe dag')
                 return

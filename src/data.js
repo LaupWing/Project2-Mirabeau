@@ -1,5 +1,5 @@
-const fetch = require('node-fetch');
-const url       = 'http://mirabeau.denniswegereef.nl/api/v1/rooms'
+const fetch     =   require('node-fetch');
+const url       =   'http://mirabeau.denniswegereef.nl/api/v1/rooms'
 
 function dataToTextObj(value){
     return{
