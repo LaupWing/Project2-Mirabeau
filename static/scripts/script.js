@@ -1,19 +1,18 @@
-const allRooms      = Array.from(document.querySelectorAll('section.room'));
-const radioBtns     = Array.from(document.querySelectorAll('input[type="radio"]'))
-let filterToggle    = false
-let filteredArray   = []
+const allRooms      =   Array.from(document.querySelectorAll('section.room'));
+const radioBtns     =   Array.from(document.querySelectorAll('input[type="radio"]'))
+let filterToggle    =   false
+let filteredArray   =   []
 document.querySelector('nav#sort_filter')
     .removeChild(document.querySelector('nav#sort_filter button'))
 
+// Credits to Stijn
 document.querySelectorAll('a')
     .forEach(a=>{
         a.addEventListener('click', ()=>{
             event.preventDefault()
             const currentRoom = a.parentElement
             document.querySelectorAll('section.room')
-                .forEach(room=>{
-                    if(room!==currentRoom)room.classList.add('scaleToZero')
-                })
+                .forEach(room=>{if(room!==currentRoom)room.classList.add('scaleToZero')})
             a.parentElement.classList.add('flipping')
             document.addEventListener('animationend',()=>{
                 fetch(a.href)
@@ -45,15 +44,23 @@ const select = document.querySelectorAll('select')
         select.addEventListener('change', function(){
             if(select.name === 'sortOption'){
                 sortItems(select.value)
-            }else{
+            }
+            else{
                 if(select.value === 'geen'){
                     filterToggle = false
                     sortItems(document.querySelector('#sortOption').value)
-                }else{
+                }
+                else{
                     filterList(allRooms, select.value)
                 }
             }
         })
+    })
+fetch('http://localhost:3001/api')
+    .then(data=>{
+        return data.json()
+    }).then(data=>{
+        console.log(data)
     })
     
 function sortItems(value){
